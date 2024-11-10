@@ -1,7 +1,7 @@
 package com.example.dreamjournalapp.dreamsmanagement.data.mapper
 
 import com.example.dreamjournalapp.dreamsmanagement.data.model.DreamEntity
-import com.example.dreamjournalapp.dreamsmanagement.domain.DreamDomainModel
+import com.example.dreamjournalapp.dreamsmanagement.domain.model.DreamDomainModel
 
 class DreamMapper {
 

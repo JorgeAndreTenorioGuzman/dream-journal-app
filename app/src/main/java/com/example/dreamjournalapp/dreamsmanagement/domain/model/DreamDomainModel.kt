@@ -1,4 +1,4 @@
-package com.example.dreamjournalapp.dreamsmanagement.domain
+package com.example.dreamjournalapp.dreamsmanagement.domain.model
 
 data class DreamDomainModel (
     val id: Int?,
