@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     id("kotlin-kapt")
     id("androidx.room")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -73,7 +74,7 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-    
+
 
     //Room
     val room_version = "2.6.1"
@@ -83,6 +84,11 @@ dependencies {
 
     //Kotlin extensions and Coroutines support for Room
     implementation("androidx.room:room-ktx:2.6.1")
+
+    // Dagger Hilt
+    implementation("com.google.dagger:hilt-android:2.52")
+    kapt("com.google.dagger:hilt-android-compiler:2.52")
+    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
 
 
 }
