@@ -2,6 +2,7 @@ package com.example.dreamjournalapp.dreamsmanagement.data.repository
 
 import com.example.dreamjournalapp.dreamsmanagement.data.local.DreamDao
 import com.example.dreamjournalapp.dreamsmanagement.data.mapper.DreamMapper.toDomainModel
+import com.example.dreamjournalapp.dreamsmanagement.data.mapper.DreamMapper.toDreamEntity
 import com.example.dreamjournalapp.dreamsmanagement.data.model.DreamEntity
 import com.example.dreamjournalapp.dreamsmanagement.domain.model.DreamDomainModel
 import com.example.dreamjournalapp.dreamsmanagement.domain.repository.DreamRepository
@@ -18,8 +19,8 @@ class DreamRepositoryImpl(
         return dao.getDreamById(id)?.toDomainModel()
     }
 
-    override suspend fun insertDream(dream: DreamEntity) {
-        return dao.insertDream(dream)
+    override suspend fun insertDream(dream: DreamDomainModel) {
+        return dao.insertDream(dream.toDreamEntity())
     }
 
     override suspend fun deleteDream(dream: DreamEntity) {

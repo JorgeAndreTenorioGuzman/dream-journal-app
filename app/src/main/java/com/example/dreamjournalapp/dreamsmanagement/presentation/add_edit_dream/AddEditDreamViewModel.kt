@@ -5,6 +5,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.dreamjournalapp.dreamsmanagement.data.model.DreamEntity
+import com.example.dreamjournalapp.dreamsmanagement.domain.model.DreamDomainModel
 import com.example.dreamjournalapp.dreamsmanagement.domain.use_case.DreamUsesCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -51,7 +52,7 @@ class AddEditDreamViewModel @Inject constructor(
                 viewModelScope.launch {
                     try{
                         dreamUsesCases.addDream(
-                            DreamEntity(
+                            DreamDomainModel(
                                 id = currentDreamId,
                                 title = dreamTitle.value.trim(),
                                 description = dreamDescription.value.trim(),

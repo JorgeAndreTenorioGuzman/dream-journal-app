@@ -10,7 +10,7 @@ interface DreamRepository {
 
     suspend fun getDreamById(id: Int): DreamDomainModel?
 
-    suspend fun insertDream(dream: DreamEntity)
+    suspend fun insertDream(dream: DreamDomainModel)
 
     suspend fun deleteDream(dream: DreamEntity)
 }
