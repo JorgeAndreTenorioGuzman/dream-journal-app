@@ -47,7 +47,7 @@ class AddEditDreamViewModel @Inject constructor(
             is AddEditDreamEvent.EnteredTitle -> {
                 dreamTitle.value = event.value
             }
-            AddEditDreamEvent.SaveNote -> {
+            AddEditDreamEvent.SaveDream -> {
                 viewModelScope.launch {
                     try{
                         dreamUsesCases.addDream(
