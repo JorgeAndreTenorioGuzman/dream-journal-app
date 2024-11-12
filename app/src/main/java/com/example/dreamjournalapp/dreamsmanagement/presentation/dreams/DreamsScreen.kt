@@ -17,6 +17,8 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.dreamjournalapp.dreamsmanagement.presentation.dreams.components.DreamItem
@@ -29,12 +31,12 @@ fun DreamsScreen(modifier: Modifier = Modifier) {
 
     Scaffold(
         floatingActionButton = {
-            FloatingActionButton(onClick = { /*TODO*/ }) {
-                Icon(imageVector = Icons.Default.Add, contentDescription = "add dream" )
+            FloatingActionButton(onClick = { /*TODO*/ }, containerColor = Color(0xFF314CB6) ) {
+                Icon(imageVector = Icons.Default.Add, contentDescription = "add dream", tint = Color.White)
             }
         },
         topBar = {
-            TopAppBar(title = { Text(text = "Dream Journal") })
+            TopAppBar(title = { Text(text = "Dream Board", fontWeight = FontWeight.Bold) } )
         }
     ) { paddingValues ->
 
