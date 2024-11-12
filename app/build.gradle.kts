@@ -8,7 +8,7 @@ plugins {
 
 android {
     namespace = "com.example.dreamjournalapp"
-    compileSdk = 34
+    compileSdk = 35
 
     room {
         schemaDirectory("$projectDir/schemas")
