@@ -29,13 +29,13 @@ fun DreamItem(modifier: Modifier = Modifier) {
         onClick = { /*TODO*/ },
         elevation = CardDefaults.cardElevation(2.dp),
         modifier = Modifier
-            .padding(16.dp)
+            .padding(start = 16.dp, end= 16.dp)
             .fillMaxWidth(),
         colors = CardDefaults.cardColors(containerColor = Color.White)
     ) {
         Column(
             modifier = Modifier
-                .padding(start = 16.dp, end= 16.dp)
+                .padding(16.dp)
                 .fillMaxWidth()
         ) {
             Text(
