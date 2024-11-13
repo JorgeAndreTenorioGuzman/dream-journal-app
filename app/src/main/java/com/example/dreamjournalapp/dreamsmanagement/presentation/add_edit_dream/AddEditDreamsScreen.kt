@@ -35,14 +35,28 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
+import com.example.dreamjournalapp.dreamsmanagement.presentation.util.Screen
 import com.example.dreamjournalapp.ui.theme.DreamJournalAppTheme
 
 @Composable
-fun AddEditDreamsScreen(modifier: Modifier = Modifier) {
+fun AddEditDreamsScreen(
+    modifier: Modifier = Modifier,
+    navController: NavController,
+    viewModel: AddEditDreamViewModel = hiltViewModel()
+) {
 
+    val titleState = viewModel.dreamTitle.value
+    val descriptionState = viewModel.dreamDescription.value
     Scaffold (
         floatingActionButton = {
-            FloatingActionButton(onClick = { /*TODO*/ }) {
+            FloatingActionButton(
+                onClick = {
+                    viewModel.onEvent(AddEditDreamEvent.SaveDream)
+                    navController.navigate(Screen.DreamsScreen.route)
+                }
+            ) {
                Icon(imageVector = Icons.Default.Check, contentDescription = "save dream")
             }
         },
@@ -73,15 +87,21 @@ fun AddEditDreamsScreen(modifier: Modifier = Modifier) {
                 )
                 Spacer(modifier = Modifier.height(24.dp))
                 AddEditDreamsTextField(
-                    value = "",
+                    value = titleState,
                     label ="Add Title",
-                    singleLine = true
+                    singleLine = true,
+                    onValueChange = {
+                        viewModel.onEvent(AddEditDreamEvent.EnteredTitle(it))
+                    }
                 )
                 Spacer(modifier = Modifier.height(24.dp))
                 AddEditDreamsTextField(
-                    value = "",
+                    value = descriptionState,
                     label ="Add Description",
-                    height = 250.dp
+                    height = 250.dp,
+                    onValueChange = {
+                        viewModel.onEvent(AddEditDreamEvent.EnteredDescription(it))
+                    }
                 )
             }
         }
@@ -98,11 +118,12 @@ fun AddEditDreamsTextField(
     value: String,
     label: String,
     height: Dp = 64.dp,
-    singleLine: Boolean = false
+    singleLine: Boolean = false,
+    onValueChange: (String) -> Unit
 ) {
     TextField(
         value = value,
-        onValueChange = {},
+        onValueChange = onValueChange,
         label = {Text(text = label)},
         modifier = modifier
             .fillMaxWidth()
@@ -132,6 +153,6 @@ private fun AddEdditDreamsTextFieldPreview() {
 @Composable
 private fun AddEditDreamsScreenPreview() {
     DreamJournalAppTheme {
-        AddEditDreamsScreen()
+        //AddEditDreamsScreen()
     }
 }
