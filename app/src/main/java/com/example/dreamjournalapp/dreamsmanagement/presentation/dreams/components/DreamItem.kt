@@ -1,5 +1,7 @@
 package com.example.dreamjournalapp.dreamsmanagement.presentation.dreams.components
 
+import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -11,6 +13,7 @@ import androidx.compose.material3.CardElevation
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
@@ -26,15 +29,19 @@ import com.example.dreamjournalapp.ui.theme.DreamJournalAppTheme
 @Composable
 fun DreamItem(
     modifier: Modifier = Modifier,
-    dream: DreamDomainModel
+    dream: DreamDomainModel,
+    isExpanded: Boolean,
+    onToggleExpand: () -> Unit
 ) {
-    
+
+
     Card(
-        onClick = { /*TODO*/ },
+        onClick = { onToggleExpand()},
         elevation = CardDefaults.cardElevation(2.dp),
         modifier = Modifier
             .padding(start = 16.dp, end= 16.dp)
-            .fillMaxWidth(),
+            .fillMaxWidth()
+            .animateContentSize(),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.background)
     ) {
         Column(
@@ -51,9 +58,9 @@ fun DreamItem(
             Spacer(modifier = Modifier.height(8.dp))
             Text(
                 text = dream.description,
-                maxLines = 3,
                 overflow = TextOverflow.Ellipsis,
-                fontWeight = FontWeight.Light
+                fontWeight = FontWeight.Light,
+                maxLines = if(isExpanded) Int.MAX_VALUE else 3
             )
         }
     }

@@ -17,6 +17,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -39,6 +40,7 @@ fun DreamsScreen(
 ) {
 
     val state = viewModel.state.value
+    val expandedDreamsIds = viewModel.expandedDreamIds.collectAsState().value
 
     Scaffold(
         floatingActionButton = {
@@ -65,7 +67,9 @@ fun DreamsScreen(
                 DreamItem(
                     dream = dream,
                     modifier = Modifier
-                        .fillMaxWidth()
+                        .fillMaxWidth(),
+                    isExpanded = expandedDreamsIds.contains(dream.id),
+                    onToggleExpand = {viewModel.toggleDreamExpansion(dream.id)}
                 )
                 Spacer(modifier = Modifier.height(16.dp))
             }
