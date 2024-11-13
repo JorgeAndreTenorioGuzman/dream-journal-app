@@ -18,7 +18,9 @@ import com.example.dreamjournalapp.dreamsmanagement.presentation.add_edit_dream.
 import com.example.dreamjournalapp.dreamsmanagement.presentation.dreams.DreamsScreen
 import com.example.dreamjournalapp.dreamsmanagement.presentation.util.Screen
 import com.example.dreamjournalapp.ui.theme.DreamJournalAppTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +36,7 @@ class MainActivity : ComponentActivity() {
                         DreamsScreen(navController = navController)
                     }
                     composable(route = Screen.AddEditNoteScreen.route) {
-                        AddEditDreamsScreen()
+                        AddEditDreamsScreen(navController = navController)
                     }
                 }
             }
