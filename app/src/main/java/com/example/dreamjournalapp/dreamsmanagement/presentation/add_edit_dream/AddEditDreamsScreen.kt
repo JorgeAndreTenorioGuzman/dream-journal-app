@@ -2,6 +2,7 @@ package com.example.dreamjournalapp.dreamsmanagement.presentation.add_edit_dream
 
 
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -11,11 +12,13 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SmallTopAppBar
@@ -53,7 +56,13 @@ fun AddEditDreamsScreen(modifier: Modifier = Modifier) {
                     .padding(start = 16.dp, end = 16.dp)
             ) {
                 Spacer(modifier = Modifier.height(24.dp))
-                Icon(imageVector = Icons.Default.Close, contentDescription = "close")
+
+                Icon(
+                    imageVector = Icons.Default.Close,
+                    contentDescription = "close",
+                    modifier = Modifier.clickable { }
+                )
+
                 Spacer(modifier = Modifier.height(24.dp))
                 Text(
                     text = "What were you dreaming about?",
@@ -66,14 +75,12 @@ fun AddEditDreamsScreen(modifier: Modifier = Modifier) {
                 AddEditDreamsTextField(
                     value = "",
                     label ="Add Title",
-                    placeholder = "write title",
                     singleLine = true
                 )
                 Spacer(modifier = Modifier.height(24.dp))
                 AddEditDreamsTextField(
                     value = "",
                     label ="Add Description",
-                    placeholder = "write description",
                     height = 250.dp
                 )
             }
@@ -90,7 +97,6 @@ fun AddEditDreamsTextField(
     modifier: Modifier = Modifier,
     value: String,
     label: String,
-    placeholder: String,
     height: Dp = 64.dp,
     singleLine: Boolean = false
 ) {
@@ -98,13 +104,17 @@ fun AddEditDreamsTextField(
         value = value,
         onValueChange = {},
         label = {Text(text = label)},
-        placeholder = { Text(text = placeholder)},
         modifier = modifier
             .fillMaxWidth()
-            .border(width = 1.dp, color = Color.Gray, shape = MaterialTheme.shapes.small)
+            .border(width = 1.dp, color = Color.LightGray, shape = MaterialTheme.shapes.small)
             .height(height),
         shape = MaterialTheme.shapes.small,
-       singleLine = singleLine
+        singleLine = singleLine,
+        colors = TextFieldDefaults.colors(
+            unfocusedContainerColor = MaterialTheme.colorScheme.background,
+            unfocusedIndicatorColor = Color.Transparent,
+            focusedIndicatorColor = Color.Transparent,
+        )
     )
 }
 
