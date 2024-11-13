@@ -35,7 +35,7 @@ fun DreamItem(
         modifier = Modifier
             .padding(start = 16.dp, end= 16.dp)
             .fillMaxWidth(),
-        colors = CardDefaults.cardColors(containerColor = Color.White)
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.background)
     ) {
         Column(
             modifier = Modifier
