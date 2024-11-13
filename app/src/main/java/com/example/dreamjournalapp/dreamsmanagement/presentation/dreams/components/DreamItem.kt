@@ -20,10 +20,14 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.dreamjournalapp.dreamsmanagement.domain.model.DreamDomainModel
 import com.example.dreamjournalapp.ui.theme.DreamJournalAppTheme
 
 @Composable
-fun DreamItem(modifier: Modifier = Modifier) {
+fun DreamItem(
+    modifier: Modifier = Modifier,
+    dream: DreamDomainModel
+) {
     
     Card(
         onClick = { /*TODO*/ },
@@ -39,16 +43,14 @@ fun DreamItem(modifier: Modifier = Modifier) {
                 .fillMaxWidth()
         ) {
             Text(
-                text = "Became the King of Albion",
+                text = dream.title,
                 maxLines = 1,
                 fontWeight = FontWeight.Bold,
                 fontSize = 18.sp,
             )
             Spacer(modifier = Modifier.height(8.dp))
             Text(
-                text = "Yesterdays dream was awesome, I became the king of albion, it was amazing. " +
-                        "I fought in the name of my country and saved the world as a hero and after i became the king" +
-                        " it wa an amazing dream. i was a good king and my rule was just and wise, and innovative and filled with joy.",
+                text = dream.description,
                 maxLines = 3,
                 overflow = TextOverflow.Ellipsis,
                 fontWeight = FontWeight.Light
@@ -62,6 +64,6 @@ fun DreamItem(modifier: Modifier = Modifier) {
 @Composable
 private fun DreamItemPreview() {
     DreamJournalAppTheme {
-        DreamItem()
+        //DreamItem()
     }
 }

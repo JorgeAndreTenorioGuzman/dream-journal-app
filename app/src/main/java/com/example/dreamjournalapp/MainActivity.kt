@@ -31,7 +31,7 @@ class MainActivity : ComponentActivity() {
                     startDestination = Screen.DreamsScreen.route
                 ) {
                     composable(route = Screen.DreamsScreen.route){
-                        DreamsScreen()
+                        DreamsScreen(navController = navController)
                     }
                     composable(route = Screen.AddEditNoteScreen.route) {
                         AddEditDreamsScreen()
