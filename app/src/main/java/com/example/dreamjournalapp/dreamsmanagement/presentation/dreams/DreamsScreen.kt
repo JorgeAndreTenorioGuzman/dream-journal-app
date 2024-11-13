@@ -31,8 +31,8 @@ fun DreamsScreen(modifier: Modifier = Modifier) {
 
     Scaffold(
         floatingActionButton = {
-            FloatingActionButton(onClick = { /*TODO*/ }, containerColor = Color(0xFF314CB6) ) {
-                Icon(imageVector = Icons.Default.Add, contentDescription = "add dream", tint = Color.White)
+            FloatingActionButton(onClick = { /*TODO*/ }) {
+                Icon(imageVector = Icons.Default.Add, contentDescription = "add dream")
             }
         },
         topBar = {
