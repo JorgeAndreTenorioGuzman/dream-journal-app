@@ -74,7 +74,7 @@ fun AddEditDreamsScreen(
                 Icon(
                     imageVector = Icons.Default.Close,
                     contentDescription = "close",
-                    modifier = Modifier.clickable { }
+                    modifier = Modifier.clickable {navController.navigate(Screen.DreamsScreen.route)}
                 )
 
                 Spacer(modifier = Modifier.height(24.dp))
