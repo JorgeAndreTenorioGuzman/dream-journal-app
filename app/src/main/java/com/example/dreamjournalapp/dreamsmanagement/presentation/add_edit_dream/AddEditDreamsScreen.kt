@@ -63,13 +63,14 @@ fun AddEditDreamsScreen(modifier: Modifier = Modifier) {
                         .width(256.dp)
                 )
                 Spacer(modifier = Modifier.height(24.dp))
-                AddEdditDreamsTextField(
+                AddEditDreamsTextField(
                     value = "",
                     label ="Add Title",
-                    placeholder = "write title"
+                    placeholder = "write title",
+                    singleLine = true
                 )
                 Spacer(modifier = Modifier.height(24.dp))
-                AddEdditDreamsTextField(
+                AddEditDreamsTextField(
                     value = "",
                     label ="Add Description",
                     placeholder = "write description",
@@ -85,12 +86,13 @@ fun AddEditDreamsScreen(modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun AddEdditDreamsTextField(
+fun AddEditDreamsTextField(
     modifier: Modifier = Modifier,
     value: String,
     label: String,
     placeholder: String,
-    height: Dp = 64.dp
+    height: Dp = 64.dp,
+    singleLine: Boolean = false
 ) {
     TextField(
         value = value,
@@ -102,6 +104,7 @@ fun AddEdditDreamsTextField(
             .border(width = 1.dp, color = Color.Gray, shape = MaterialTheme.shapes.small)
             .height(height),
         shape = MaterialTheme.shapes.small,
+       singleLine = singleLine
     )
 }
 
