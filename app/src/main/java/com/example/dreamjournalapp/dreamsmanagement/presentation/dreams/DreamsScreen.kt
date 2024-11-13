@@ -48,7 +48,7 @@ fun DreamsScreen(modifier: Modifier = Modifier) {
         ) {
             items(10) { dream ->
                 DreamItem()
-                //Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(16.dp))
             }
 
         }
