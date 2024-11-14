@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Edit
+import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CardElevation
@@ -21,6 +22,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
@@ -61,15 +63,9 @@ fun DreamItem(
                 .padding(16.dp)
                 .fillMaxWidth()
         ) {
-            Text(text = formattedDateTime)
+
             Row(modifier = Modifier.fillMaxWidth()) {
-                Text(
-                    text = dream.title,
-                    maxLines = 2,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 18.sp,
-                    modifier = Modifier.weight(7f)
-                )
+                Text(text = formattedDateTime, modifier = Modifier.weight(10f))
                 Icon(
                     modifier = Modifier
                         .weight(1f)
@@ -78,12 +74,26 @@ fun DreamItem(
                     contentDescription = "edit_dream",
                 )
             }
+            Text(
+                text = dream.title,
+                maxLines = 2,
+                fontWeight = FontWeight.Bold,
+                fontSize = 18.sp,
+            )
             Spacer(modifier = Modifier.height(8.dp))
             Text(
                 text = dream.description,
                 overflow = TextOverflow.Ellipsis,
                 fontWeight = FontWeight.Light,
                 maxLines = if(isExpanded) Int.MAX_VALUE else 3
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+            Icon(
+                imageVector = Icons.Default.FavoriteBorder,
+                contentDescription = "add to favorites",
+                modifier = Modifier
+                    .align(Alignment.End)
+                    .clickable {  }
             )
         }
     }
