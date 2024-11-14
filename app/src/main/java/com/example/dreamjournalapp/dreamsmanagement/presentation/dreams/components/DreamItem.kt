@@ -58,7 +58,7 @@ fun DreamItem(
             Row(modifier = Modifier.fillMaxWidth()) {
                 Text(
                     text = dream.title,
-                    maxLines = 1,
+                    maxLines = 2,
                     fontWeight = FontWeight.Bold,
                     fontSize = 18.sp,
                     modifier = Modifier.weight(7f)
