@@ -18,6 +18,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.dreamjournalapp.dreamsmanagement.presentation.add_edit_dream.AddEditDreamsScreen
 import com.example.dreamjournalapp.dreamsmanagement.presentation.dreams.DreamsScreen
+import com.example.dreamjournalapp.dreamsmanagement.presentation.dreams.FavoriteDreamsScreen
 import com.example.dreamjournalapp.dreamsmanagement.presentation.util.Screen
 import com.example.dreamjournalapp.ui.theme.DreamJournalAppTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -36,6 +37,9 @@ class MainActivity : ComponentActivity() {
                 ) {
                     composable(route = Screen.DreamsScreen.route){
                         DreamsScreen(navController = navController)
+                    }
+                    composable(route = Screen.FavoriteDreamsScreen.route){
+                        FavoriteDreamsScreen(navController = navController)
                     }
                     composable(
                         route = Screen.AddEditNoteScreen.route +

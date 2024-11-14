@@ -5,10 +5,12 @@ import androidx.room.Room
 import com.example.dreamjournalapp.dreamsmanagement.data.local.DreamDatabase
 import com.example.dreamjournalapp.dreamsmanagement.data.repository.DreamRepositoryImpl
 import com.example.dreamjournalapp.dreamsmanagement.domain.repository.DreamRepository
+import com.example.dreamjournalapp.dreamsmanagement.domain.use_case.AddDreamToFavourites
 import com.example.dreamjournalapp.dreamsmanagement.domain.use_case.AddDreamUseCase
 import com.example.dreamjournalapp.dreamsmanagement.domain.use_case.DreamUsesCases
 import com.example.dreamjournalapp.dreamsmanagement.domain.use_case.GetDreamUseCase
 import com.example.dreamjournalapp.dreamsmanagement.domain.use_case.GetDreamsUseCase
+import com.example.dreamjournalapp.dreamsmanagement.domain.use_case.GetFavoriteDreams
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -41,7 +43,9 @@ object AppModule {
         return DreamUsesCases(
             getDreams = GetDreamsUseCase(repository),
             addDream = AddDreamUseCase(repository),
-            getDream = GetDreamUseCase(repository)
+            getDream = GetDreamUseCase(repository),
+            addDreamToFavourites = AddDreamToFavourites(repository),
+            getFavoriteDreams = GetFavoriteDreams(repository)
         )
     }
 }

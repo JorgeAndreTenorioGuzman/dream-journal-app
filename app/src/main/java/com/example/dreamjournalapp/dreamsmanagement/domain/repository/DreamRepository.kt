@@ -13,4 +13,8 @@ interface DreamRepository {
     suspend fun insertDream(dream: DreamDomainModel)
 
     suspend fun deleteDream(dream: DreamEntity)
+
+    suspend fun addDreamToFavourites(dreamId: Int, isFavorite: Boolean)
+
+    fun getFavoritesDreams(): Flow<List<DreamDomainModel>>
 }

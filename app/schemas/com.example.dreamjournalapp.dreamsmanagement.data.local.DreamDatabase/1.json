@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "2667e2ca6a716c1916d144f187e2697f",
+    "identityHash": "5c8d25ab285d4dc068b7feb98a3d638b",
     "entities": [
       {
         "tableName": "DreamEntity",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`title` TEXT NOT NULL, `description` TEXT NOT NULL, `creationTime` TEXT NOT NULL, `imageUri` TEXT, `id` INTEGER, PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`title` TEXT NOT NULL, `description` TEXT NOT NULL, `creationTime` TEXT NOT NULL, `isFavorite` INTEGER NOT NULL, `imageUri` TEXT, `id` INTEGER, PRIMARY KEY(`id`))",
         "fields": [
           {
             "fieldPath": "title",
@@ -24,6 +24,12 @@
             "fieldPath": "creationTime",
             "columnName": "creationTime",
             "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "isFavorite",
+            "columnName": "isFavorite",
+            "affinity": "INTEGER",
             "notNull": true
           },
           {
@@ -52,7 +58,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '2667e2ca6a716c1916d144f187e2697f')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '5c8d25ab285d4dc068b7feb98a3d638b')"
     ]
   }
 }

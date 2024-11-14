@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Edit
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -43,7 +44,9 @@ fun DreamItem(
     dream: DreamDomainModel,
     isExpanded: Boolean,
     onToggleExpand: () -> Unit,
-    onClickEdit: () -> Unit
+    onClickEdit: () -> Unit,
+    addToFavorites: () -> Unit,
+    isFavorite: Boolean
 ) {
 
     val formattedDateTime = dream.creationTime
@@ -89,11 +92,11 @@ fun DreamItem(
             )
             Spacer(modifier = Modifier.height(8.dp))
             Icon(
-                imageVector = Icons.Default.FavoriteBorder,
+                imageVector = if(!isFavorite) Icons.Default.FavoriteBorder else Icons.Default.Favorite,
                 contentDescription = "add to favorites",
                 modifier = Modifier
                     .align(Alignment.End)
-                    .clickable {  }
+                    .clickable {addToFavorites()}
             )
         }
     }

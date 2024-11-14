@@ -14,6 +14,7 @@ object DreamMapper {
             creationTime = this.creationTime,
             imageUri = this.imageUri,
             description = this.description,
+            isFavorite = this.isFavorite
         )
     }
 
@@ -23,7 +24,8 @@ object DreamMapper {
             title = this.title,
             description = this.description,
             imageUri = this.imageUri,
-            creationTime = this.creationTime
+            creationTime = this.creationTime,
+            isFavorite = this.isFavorite
         )
     }
 

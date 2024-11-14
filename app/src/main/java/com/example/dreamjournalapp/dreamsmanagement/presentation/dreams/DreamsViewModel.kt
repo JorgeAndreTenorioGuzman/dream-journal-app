@@ -10,6 +10,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -26,6 +27,7 @@ class DreamsViewModel @Inject constructor(
 
     init {
         getDreams()
+        getFavoriteDreams()
     }
 
     fun toggleDreamExpansion(dreamId: Int?) {
@@ -36,6 +38,30 @@ class DreamsViewModel @Inject constructor(
         }
     }
 
+     fun markFavorite(dreamId: Int?){
+         viewModelScope.launch {
+             if (dreamId != null) {
+                 dreamUsesCases.addDreamToFavourites(dreamId,true)
+             }
+         }
+     }
+
+    fun unmarkFavorite(dreamId: Int?){
+        viewModelScope.launch {
+            if (dreamId != null) {
+                dreamUsesCases.addDreamToFavourites(dreamId,false)
+            }
+        }
+    }
+
+    private fun getFavoriteDreams() {
+        dreamUsesCases.getFavoriteDreams()
+            .onEach { dreams ->
+                _state.value = state.value.copy(
+                    favoriteDreams = dreams
+                )
+            }.launchIn(viewModelScope)
+    }
 
     private fun getDreams() {
         dreamUsesCases.getDreams()

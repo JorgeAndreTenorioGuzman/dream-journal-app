@@ -17,7 +17,6 @@ import androidx.compose.material.icons.filled.Home
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -25,21 +24,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.dreamjournalapp.dreamsmanagement.presentation.dreams.components.DreamItem
 import com.example.dreamjournalapp.dreamsmanagement.presentation.util.Screen
-import com.example.dreamjournalapp.ui.theme.DreamJournalAppTheme
 
 
 @RequiresApi(Build.VERSION_CODES.O)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DreamsScreen(
+fun FavoriteDreamsScreen(
     modifier: Modifier = Modifier,
     navController: NavController,
     viewModel: DreamsViewModel = hiltViewModel()
@@ -49,29 +45,16 @@ fun DreamsScreen(
     val expandedDreamsIds = viewModel.expandedDreamIds.collectAsState().value
 
     Scaffold(
-        floatingActionButton = {
-            FloatingActionButton(
-                onClick = {
-                    navController.navigate(Screen.AddEditNoteScreen.route)
-                 }
-            ) {
-                Icon(imageVector = Icons.Default.Add, contentDescription = "add dream")
-            }
-        },
         topBar = {
             TopAppBar(
-                title = { Text(text = "Dreams", fontWeight = FontWeight.Bold) },
+                title = { Text(text = "Favorite Dreams", fontWeight = FontWeight.Bold) },
                 actions = {
                     Icon(
                         imageVector = Icons.Default.Home,
                         contentDescription = "go_dream_board",
                         modifier = Modifier.clickable { navController.navigate(Screen.DreamsScreen.route) }
                     )
-                    Icon(
-                        imageVector = Icons.Default.Favorite,
-                        contentDescription = "go_favorite_dreams",
-                        modifier = Modifier.clickable { navController.navigate(Screen.FavoriteDreamsScreen.route) }
-                    )
+                    Icon(imageVector = Icons.Default.Favorite, contentDescription = "go_favorite_dreams", modifier = Modifier.clickable { navController.navigate(Screen.FavoriteDreamsScreen.route) })
                 }
             )
         }
@@ -83,7 +66,7 @@ fun DreamsScreen(
                 .padding(paddingValues),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            items(state.dreams) { dream ->
+            items(state.favoriteDreams) { dream ->
                 DreamItem(
                     dream = dream,
                     modifier = Modifier
@@ -101,12 +84,4 @@ fun DreamsScreen(
 
     }
 
-}
-
-@Preview
-@Composable
-private fun DreamsScreenPreview() {
-    DreamJournalAppTheme {
-        //DreamsScreen()
-    }
 }

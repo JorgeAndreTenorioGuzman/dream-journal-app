@@ -26,4 +26,12 @@ class DreamRepositoryImpl(
     override suspend fun deleteDream(dream: DreamEntity) {
         return dao.deleteDream(dream)
     }
+
+    override suspend fun addDreamToFavourites(dreamId: Int, isFavorite: Boolean) {
+        return dao.updateFavoriteStatus(dreamId, isFavorite)
+    }
+
+    override fun getFavoritesDreams(): Flow<List<DreamDomainModel>> {
+        return dao.getFavoriteDreams().toDomainModel()
+    }
 }

@@ -22,4 +22,10 @@ interface DreamDao {
 
     @Delete
     suspend fun deleteDream(dream: DreamEntity)
+
+    @Query("SELECT * FROM dreamentity WHERE isFavorite = 1")
+    fun getFavoriteDreams(): Flow<List<DreamEntity>>
+
+    @Query("UPDATE dreamentity SET isFavorite = :isFavorite WHERE id = :id")
+    suspend fun updateFavoriteStatus(id: Int, isFavorite: Boolean)
 }

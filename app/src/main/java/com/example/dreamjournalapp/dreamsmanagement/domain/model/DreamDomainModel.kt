@@ -7,5 +7,6 @@ data class DreamDomainModel (
     val title: String,
     val description: String,
     val creationTime: ZonedDateTime,
+    val isFavorite: Boolean = false,
     val imageUri: String?
 )
