@@ -69,7 +69,8 @@ fun DreamsScreen(
                     modifier = Modifier
                         .fillMaxWidth(),
                     isExpanded = expandedDreamsIds.contains(dream.id),
-                    onToggleExpand = {viewModel.toggleDreamExpansion(dream.id)}
+                    onToggleExpand = {viewModel.toggleDreamExpansion(dream.id)},
+                    onClickEdit = {navController.navigate(Screen.AddEditNoteScreen.route + "?dreamId=${dream.id}")}
                 )
                 Spacer(modifier = Modifier.height(16.dp))
             }

@@ -2,14 +2,19 @@ package com.example.dreamjournalapp.dreamsmanagement.presentation.dreams.compone
 
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CardElevation
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -31,7 +36,8 @@ fun DreamItem(
     modifier: Modifier = Modifier,
     dream: DreamDomainModel,
     isExpanded: Boolean,
-    onToggleExpand: () -> Unit
+    onToggleExpand: () -> Unit,
+    onClickEdit: () -> Unit
 ) {
 
 
@@ -39,7 +45,7 @@ fun DreamItem(
         onClick = { onToggleExpand()},
         elevation = CardDefaults.cardElevation(2.dp),
         modifier = Modifier
-            .padding(start = 16.dp, end= 16.dp)
+            .padding(start = 16.dp, end = 16.dp)
             .fillMaxWidth()
             .animateContentSize(),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.background)
@@ -49,12 +55,22 @@ fun DreamItem(
                 .padding(16.dp)
                 .fillMaxWidth()
         ) {
-            Text(
-                text = dream.title,
-                maxLines = 1,
-                fontWeight = FontWeight.Bold,
-                fontSize = 18.sp,
-            )
+            Row(modifier = Modifier.fillMaxWidth()) {
+                Text(
+                    text = dream.title,
+                    maxLines = 1,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 18.sp,
+                    modifier = Modifier.weight(7f)
+                )
+                Icon(
+                    modifier = Modifier
+                        .weight(1f)
+                        .clickable { onClickEdit() },
+                    imageVector = Icons.Default.Edit,
+                    contentDescription = "edit_dream",
+                )
+            }
             Spacer(modifier = Modifier.height(8.dp))
             Text(
                 text = dream.description,

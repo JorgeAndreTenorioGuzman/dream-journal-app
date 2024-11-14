@@ -11,9 +11,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.dreamjournalapp.dreamsmanagement.presentation.add_edit_dream.AddEditDreamsScreen
 import com.example.dreamjournalapp.dreamsmanagement.presentation.dreams.DreamsScreen
 import com.example.dreamjournalapp.dreamsmanagement.presentation.util.Screen
@@ -35,7 +37,18 @@ class MainActivity : ComponentActivity() {
                     composable(route = Screen.DreamsScreen.route){
                         DreamsScreen(navController = navController)
                     }
-                    composable(route = Screen.AddEditNoteScreen.route) {
+                    composable(
+                        route = Screen.AddEditNoteScreen.route +
+                                "?dreamId={dreamId}",
+                        arguments = listOf(
+                            navArgument(
+                                name = "dreamId"
+                            ){
+                                type = NavType.IntType
+                                defaultValue = -1
+                            }
+                        )
+                    ) {
                         AddEditDreamsScreen(navController = navController)
                     }
                 }
