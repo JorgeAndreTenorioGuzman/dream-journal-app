@@ -1,5 +1,7 @@
 package com.example.dreamjournalapp.dreamsmanagement.presentation.dreams.components
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.clickable
@@ -30,7 +32,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.dreamjournalapp.dreamsmanagement.domain.model.DreamDomainModel
 import com.example.dreamjournalapp.ui.theme.DreamJournalAppTheme
+import java.time.format.DateTimeFormatter
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun DreamItem(
     modifier: Modifier = Modifier,
@@ -40,6 +44,8 @@ fun DreamItem(
     onClickEdit: () -> Unit
 ) {
 
+    val formattedDateTime = dream.creationTime
+        .format(DateTimeFormatter.ofPattern("MMMM dd, yyyy HH:mm z"))
 
     Card(
         onClick = { onToggleExpand()},
@@ -55,6 +61,7 @@ fun DreamItem(
                 .padding(16.dp)
                 .fillMaxWidth()
         ) {
+            Text(text = formattedDateTime)
             Row(modifier = Modifier.fillMaxWidth()) {
                 Text(
                     text = dream.title,

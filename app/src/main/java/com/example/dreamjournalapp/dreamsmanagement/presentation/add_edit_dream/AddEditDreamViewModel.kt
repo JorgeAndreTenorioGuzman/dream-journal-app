@@ -1,5 +1,7 @@
 package com.example.dreamjournalapp.dreamsmanagement.presentation.add_edit_dream
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
@@ -9,6 +11,7 @@ import com.example.dreamjournalapp.dreamsmanagement.domain.model.DreamDomainMode
 import com.example.dreamjournalapp.dreamsmanagement.domain.use_case.DreamUsesCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import java.time.ZonedDateTime
 import java.util.Calendar
 import javax.inject.Inject
 
@@ -40,6 +43,7 @@ class AddEditDreamViewModel @Inject constructor(
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     fun onEvent(event: AddEditDreamEvent){
         when(event){
             is AddEditDreamEvent.EnteredDescription -> {
@@ -56,7 +60,7 @@ class AddEditDreamViewModel @Inject constructor(
                                 id = currentDreamId,
                                 title = dreamTitle.value.trim(),
                                 description = dreamDescription.value.trim(),
-                                date = Calendar.DATE.toString(),
+                                creationTime = ZonedDateTime.now(),
                                 imageUri = ""
                             )
                         )

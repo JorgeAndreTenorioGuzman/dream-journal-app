@@ -1,5 +1,7 @@
 package com.example.dreamjournalapp.dreamsmanagement.presentation.dreams
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -31,6 +33,7 @@ import com.example.dreamjournalapp.dreamsmanagement.presentation.util.Screen
 import com.example.dreamjournalapp.ui.theme.DreamJournalAppTheme
 
 
+@RequiresApi(Build.VERSION_CODES.O)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DreamsScreen(
