@@ -11,7 +11,7 @@ object DreamMapper {
         return DreamDomainModel(
             id = this.id,
             title = this.title,
-            date = this.date,
+            creationTime = this.creationTime,
             imageUri = this.imageUri,
             description = this.description,
         )
@@ -23,7 +23,7 @@ object DreamMapper {
             title = this.title,
             description = this.description,
             imageUri = this.imageUri,
-            date = this.date
+            creationTime = this.creationTime
         )
     }
 
