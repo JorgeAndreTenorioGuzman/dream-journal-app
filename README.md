@@ -4,10 +4,10 @@
 1. [About the Project](#about-the-project)
 2. [Features](#features)
 3. [Demo](#demo)
-4. [Liscense](#license)
+4. [License](#license)
 
 ## About the project
-This dream journal app for Android was developed using Jetpack compose, Clean architecture, Room, and Dagger Hilt.
+This dream journal app for Android was developed using Jetpack Compose, Clean Architecture, Room, and Dagger Hilt.
 
 ## Features
 
