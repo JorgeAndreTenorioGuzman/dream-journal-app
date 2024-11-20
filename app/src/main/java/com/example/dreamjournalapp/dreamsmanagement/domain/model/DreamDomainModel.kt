@@ -7,6 +7,8 @@ data class DreamDomainModel (
     val title: String,
     val description: String,
     val creationTime: ZonedDateTime,
-    val isFavorite: Boolean = false,
+    var isFavorite: Boolean = false,
     val imageUri: String?
 )
+
+class InvalidDreamException(message: String): Exception(message)
