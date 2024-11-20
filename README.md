@@ -7,7 +7,7 @@
 4. [License](#license)
 
 ## About the project
-This dream journal app for Android was developed using Jetpack Compose, Clean Architecture, Room, and Dagger Hilt.
+This dream journal app for Android was developed using Jetpack Compose, Clean Architecture, Room, and Dagger Hilt. I am in the process of implementing tests in the testing branch, starting with Unit Tests, followed by UI Integration Tests, and finishing with End-to-End Tests. 
 
 ## Features
 
