@@ -12,3 +12,4 @@ data class DreamDomainModel (
 )
 
 class InvalidDreamException(message: String): Exception(message)
+class DreamNotFoundException(message: String): Exception(message)
