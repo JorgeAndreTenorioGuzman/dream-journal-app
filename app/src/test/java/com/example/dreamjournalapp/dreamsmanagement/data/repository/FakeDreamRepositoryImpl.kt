@@ -34,6 +34,6 @@ class FakeDreamRepositoryImpl: DreamRepository {
     }
 
     override fun getFavoritesDreams(): Flow<List<DreamDomainModel>> {
-        TODO("Not yet implemented")
+        return flow{ emit(dreams.filter { it.isFavorite })}
     }
 }
