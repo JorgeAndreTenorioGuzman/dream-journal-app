@@ -1,6 +1,8 @@
 package com.example.dreamjournalapp.dreamsmanagement.presentation.add_edit_dream
 
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -30,6 +32,7 @@ import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
@@ -37,9 +40,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.example.dreamjournalapp.core.util.TestTags
 import com.example.dreamjournalapp.dreamsmanagement.presentation.util.Screen
 import com.example.dreamjournalapp.ui.theme.DreamJournalAppTheme
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun AddEditDreamsScreen(
     modifier: Modifier = Modifier,
@@ -92,7 +97,8 @@ fun AddEditDreamsScreen(
                     singleLine = true,
                     onValueChange = {
                         viewModel.onEvent(AddEditDreamEvent.EnteredTitle(it))
-                    }
+                    },
+                    testTag = TestTags.TITLE_TEXT_FIELD
                 )
                 Spacer(modifier = Modifier.height(24.dp))
                 AddEditDreamsTextField(
@@ -101,7 +107,8 @@ fun AddEditDreamsScreen(
                     height = 250.dp,
                     onValueChange = {
                         viewModel.onEvent(AddEditDreamEvent.EnteredDescription(it))
-                    }
+                    },
+                    testTag = TestTags.CONTENT_TEXT_FIELD
                 )
             }
         }
@@ -119,6 +126,7 @@ fun AddEditDreamsTextField(
     label: String,
     height: Dp = 64.dp,
     singleLine: Boolean = false,
+    testTag: String = "",
     onValueChange: (String) -> Unit
 ) {
     TextField(
@@ -128,7 +136,8 @@ fun AddEditDreamsTextField(
         modifier = modifier
             .fillMaxWidth()
             .border(width = 1.dp, color = Color.LightGray, shape = MaterialTheme.shapes.small)
-            .height(height),
+            .height(height)
+            .testTag(testTag),
         shape = MaterialTheme.shapes.small,
         singleLine = singleLine,
         colors = TextFieldDefaults.colors(
