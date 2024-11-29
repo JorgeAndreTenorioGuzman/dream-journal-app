@@ -35,7 +35,7 @@ object TestAppModule {
     @Provides
     @Singleton
     fun provideDreamRepository(db: DreamDatabase): DreamRepository{
-        return FakeDreamRepositoryImpl()
+        return DreamRepositoryImpl(db.dreamDao)
     }
 
     @Provides
@@ -49,5 +49,6 @@ object TestAppModule {
             getFavoriteDreams = GetFavoriteDreams(repository)
         )
     }
+
 
 }
