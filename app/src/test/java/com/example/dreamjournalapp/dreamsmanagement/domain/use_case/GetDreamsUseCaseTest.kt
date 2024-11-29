@@ -2,7 +2,6 @@ package com.example.dreamjournalapp.dreamsmanagement.domain.use_case
 
 import com.example.dreamjournalapp.dreamsmanagement.data.repository.FakeDreamRepositoryImpl
 import com.example.dreamjournalapp.dreamsmanagement.domain.model.DreamDomainModel
-import io.mockk.coEvery
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.runBlocking
