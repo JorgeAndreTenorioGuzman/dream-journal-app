@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.room.Room
 import com.example.dreamjournalapp.dreamsmanagement.data.local.DreamDatabase
 import com.example.dreamjournalapp.dreamsmanagement.data.repository.DreamRepositoryImpl
+import com.example.dreamjournalapp.dreamsmanagement.data.repository.FakeDreamRepositoryImpl
 import com.example.dreamjournalapp.dreamsmanagement.domain.repository.DreamRepository
 import com.example.dreamjournalapp.dreamsmanagement.domain.use_case.AddDreamToFavourites
 import com.example.dreamjournalapp.dreamsmanagement.domain.use_case.AddDreamUseCase
@@ -34,7 +35,7 @@ object TestAppModule {
     @Provides
     @Singleton
     fun provideDreamRepository(db: DreamDatabase): DreamRepository{
-        return DreamRepositoryImpl(db.dreamDao)
+        return FakeDreamRepositoryImpl()
     }
 
     @Provides
@@ -49,9 +50,4 @@ object TestAppModule {
         )
     }
 
-    @Provides
-    @Singleton
-    fun provideDreamViewModel(dreamUsesCases: DreamUsesCases): DreamsViewModel {
-        return DreamsViewModel(dreamUsesCases = dreamUsesCases)
-    }
 }
